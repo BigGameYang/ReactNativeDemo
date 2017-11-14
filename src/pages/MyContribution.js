@@ -20,7 +20,14 @@ export default class MyContribution extends Component {
 
     _onRefresh() {
         this.setState({ isRefreshing: true });
+        setTimeout(() => {
+            this.setState({isRefreshing:false})
+        }, 5000);
+    }
 
+
+    componentDidMount() {
+        this._onRefresh();
     }
 
     getRedCountText(prefixText, endfixText, count, marginTop) {
@@ -46,7 +53,7 @@ export default class MyContribution extends Component {
                     />
                 }
                 showsVerticalScrollIndicator={false}
-            >
+                >
                 <Image
                     style={styles.headImage}
                     source={{ uri: 'http://image.xinmin.cn/2013/04/23/20130423160116689534.jpg' }}
