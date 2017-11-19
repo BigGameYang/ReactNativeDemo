@@ -7,7 +7,6 @@ import MyContribution from './MyContribution'
 import ContributionRank from './ContributionRank'
 import { getTotalCount } from '../api/VRGiftApi'
 import RequestUtil from '../utils/RequestUtil'
-import TabIndicator from '../widget/TabIndicator'
 import ScrollableTabView, { DefaultTabBar, } from 'react-native-scrollable-tab-view'
 
 
@@ -24,8 +23,8 @@ const strWCoinCountEnd = ' 鲸币。'
 
 
 export default class ContributionTab extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             fansCount: 0,
             giftCount: 0,
@@ -153,14 +152,16 @@ const style = StyleSheet.create({
     },
     page: {
         flex: 1,
+        flexDirection:'column',
         justifyContent: 'center',
-        alignItems: 'center',
+        alignItems: 'stretch',
         backgroundColor: '#9DD6EB'
     },
     pageText: {
         color: colors.color2,
         fontSize: 30,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        alignSelf:'center'
     },
     tabIndicator: {
         width: DisplayUtil.screenWidth,

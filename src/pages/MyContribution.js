@@ -21,13 +21,19 @@ export default class MyContribution extends Component {
     _onRefresh() {
         this.setState({ isRefreshing: true });
         setTimeout(() => {
-            this.setState({isRefreshing:false})
+            if(this._isMounted){
+                this.setState({isRefreshing:false})
+            }
         }, 5000);
     }
 
-
-    componentDidMount() {
+    componentWillMount(){
+        this._isMounted = true;
         this._onRefresh();
+    }
+
+    componentWillUnmount(){
+        this._isMounted = false;
     }
 
     getRedCountText(prefixText, endfixText, count, marginTop) {
@@ -45,6 +51,7 @@ export default class MyContribution extends Component {
     render() {
         return (
             <ScrollView
+                style={styles.root}
                 refreshControl={
                     <RefreshControl
                         style={{ flexDirection: 'column', alignItems: 'center' }}
@@ -76,8 +83,7 @@ export default class MyContribution extends Component {
 
 const styles = {
     root: {
-        flexDirection: 'column',
-        alignItems: 'center'
+        width:'auto'
     },
     headImage: {
         width: 80,

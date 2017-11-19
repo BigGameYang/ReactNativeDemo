@@ -1,5 +1,5 @@
 import { AppRegistry } from 'react-native';
 // import App from './App';
-import ContributionTab from './src/pages/ContributionTab'
+import RouterNavigator from './src/router/Router'
 
-AppRegistry.registerComponent('reactnativedemo', () => ContributionTab);
+AppRegistry.registerComponent('reactnativedemo', () => RouterNavigator);
