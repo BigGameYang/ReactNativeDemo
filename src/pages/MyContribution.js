@@ -24,7 +24,7 @@ export default class MyContribution extends Component {
             if(this._isMounted){
                 this.setState({isRefreshing:false})
             }
-        }, 5000);
+        }, 3000);
     }
 
     componentWillMount(){

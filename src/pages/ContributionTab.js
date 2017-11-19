@@ -1,3 +1,7 @@
+/**
+ * 贡献榜主页
+ */
+
 import React, { Component } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import Swiper from 'react-native-swiper'
@@ -8,7 +12,7 @@ import ContributionRank from './ContributionRank'
 import { getTotalCount } from '../api/VRGiftApi'
 import RequestUtil from '../utils/RequestUtil'
 import ScrollableTabView, { DefaultTabBar, } from 'react-native-scrollable-tab-view'
-
+import {SafeAreaView} from 'react-navigation'
 
 const pages = [
     '我的贡献',
@@ -23,6 +27,10 @@ const strWCoinCountEnd = ' 鲸币。'
 
 
 export default class ContributionTab extends Component {
+    static navigationOptions = {
+        header : null,
+    };
+
     constructor(props) {
         super(props);
         this.state = {
@@ -92,7 +100,7 @@ export default class ContributionTab extends Component {
 
     render() {
         return (
-            <View style={style.root}>
+            <SafeAreaView style={style.root}>
                 <Text style={style.totalNormalText}>
                     {strUserCountPre}
                     <Text style={style.totalCountText}>
@@ -123,7 +131,7 @@ export default class ContributionTab extends Component {
                     {this.state.pages.map(data => this.renderItemPage(data))}
                 </ScrollableTabView>
 
-            </View>
+            </SafeAreaView>
         );
     }
 }
@@ -131,11 +139,11 @@ export default class ContributionTab extends Component {
 
 const colors = ResourceUtil.colors;
 
-
 const style = StyleSheet.create({
     root: {
+        flex:1,
         flexDirection: 'column',
-        height: DisplayUtil.screenHeight
+        backgroundColor:colors.color12
     },
     totalNormalText: {
         color: colors.color4,
@@ -155,7 +163,6 @@ const style = StyleSheet.create({
         flexDirection:'column',
         justifyContent: 'center',
         alignItems: 'stretch',
-        backgroundColor: '#9DD6EB'
     },
     pageText: {
         color: colors.color2,
